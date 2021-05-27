@@ -1,0 +1,69 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+  {{movie.name}}
+{% endblock %}
+
+{% block body %}
+
+    <h1>{{movie.name}}</h1>
+
+    <div class="container">
+        <div style="display: inline-flex">
+            <h5>Nom original :</h5>
+            <p>{{movie.originalName}}</p>
+        </div>
+        <br>
+        <div style="display: inline-flex">
+            <h5>Date de sortie :</h5>
+            <p>{{movie.releaseDate}}</p>
+        </div>
+        <div>
+            <h5>Liste des acteurs :</h5>
+            <ul>
+            {% for actor in movie.actors %}
+                <li>
+                    <a href="/showByActor/{{ actor.id}}">{{actor.lastName}} {{actor.firstName}}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h5>Liste des genres :</h5>
+            <ul>
+            {% for genre in movie.genres %}
+                <li>
+                    <a href="/showByGenre/{{ genre.id}}">{{genre.name}}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h5>Liste des studios :</h5> 
+            <ul>
+            {% for studio in movie.studio %}
+                <li>
+                    <a href="/showByStudio/{{ studio.id}}">{{studio.name}}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h5>Affiche du film :</h5>
+            <img style="max-width: 25%" src="/assets/upload/images/{{ movie.image }}" alt={{movie.name}}/>
+        </div>
+        <div>
+            <h5>Synopsis :</h5>
+            <p>{{movie.synopsis | raw}}</p>
+        </div>
+        <div>
+            <h5>Avez-vous vu le film :</h5>
+            <p>{% if movie.seen %} oui {% else %} non {% endif %}</p>
+        </div>
+        <div>
+            <h5>Est-il dans votre liste de film à voir :</h5>
+            <p>{% if movie.watchList %} oui {% else %} non {% endif %}</p>
+        </div>
+    </div>
+
+{% endblock %}

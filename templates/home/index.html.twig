@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+  Accueil
+{% endblock %}
+
+{% block body %}
+
+  <h1>Bienvenue sur le site MyMovies Db !</h1>
+
+  <p>Vous aurez accès à différentes informations concernant un film.</p>
+  <p>Il vous sera possible de rechercher tous les films disponibles selon l'actrice/acteur, le studio ou le genre que vous avez appréciez.</p>
+  <p>Des améliorations sont au programme : vous pourrez bientôt accéder à la liste de vos films que vous souhaitez regarder mais aussi à la liste des films que vous avez déjà visionnés.</p>
+  {% if not app.user %}
+    <p>L'accès est privé alors n'hésitez pas à vous <a href="{{ path('security_registration') }}">inscrire</a> pour profiter des fonctionnalités de ce site; et si c'est déjà fait, <a  href="{{ path('security_login') }}">connectez-vous</a> sans plus tarder!</p>
+  {% endif %}
+  
+{% endblock %}

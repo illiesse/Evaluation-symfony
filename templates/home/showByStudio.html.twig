@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+  Liste des Films par Studio
+{% endblock %}
+
+{% block body %}
+    <h1>
+       Voici la liste de tous les films du studio {{studio.name}}:
+    </h1>
+    <div class="row">
+        <div class="col-9">
+            {% for movie in movies %}
+                <h5>
+                    {{ movie.name }}
+                </h5>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
